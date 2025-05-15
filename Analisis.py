@@ -796,12 +796,11 @@ class TabbedPage(tk.Frame):
             model = LinearRegression()
             model.fit(X_train, y_train)
             y_pred = model.predict(X_test)
-            formatted_pred = f"{y_pred:.2f}"
 
             # Store results in controller
             result_df = X_test.copy()
             result_df["Actual"] = y_test.values
-            result_df["Predicted"] = formatted_pred
+            result_df["Predicted"] = y_pred
             self.controller.regress_results = result_df
             self.controller.regress_model = model
             self.controller.regress_metrics = {
